@@ -72,7 +72,7 @@ We will create a mini corporate network with these instructions using Server 201
 5)	Open PS ISE and run as admin
 6)	Open script from desktop folder
 7)	Before Running the script, enable the execution of scripts 
-8)	>Set-ExecutionPolicy Unrestricted -> Yes to All
+8)	Set-ExecutionPolicy Unrestricted -> Yes to All
 9)	Cd c:\users\a-mgraham\desktop\AD_PS-master to change to the correct directory
 10)	Click play and it should run the script
 11)	Once it completes, go to AD Users and Computers -> -USERS
