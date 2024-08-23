@@ -1,4 +1,4 @@
-# CreateActiveDirectoryLab
+# Create Active Directory Lab
 We will create a mini corporate network with these instructions using Server 2019 and one Windows 10 client to verify access. Both VMs were created with Oracle. 
 
 1)	Run through the setup of the VM for Server 2019
