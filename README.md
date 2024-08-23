@@ -110,21 +110,50 @@ We will create a mini corporate network with these instructions using Server 201
 2)	In mydomain.com -> go to the Computers container and verify Client1
 
 ## PowerShell  Script Explained
+
  
+![getcontent](https://github.com/GSecAwareness/CreateActiveDirectoryLab/blob/main/Get-content%20from%20Names%20text%20file.PNG)
 
+*PASSWORD_FOR_USERS: Password1* 		
 
-PASSWORD_FOR_USERS: Password1 		//sets this as the password for all users we create
-USER_FIRST_LAST_LIST =  Get-Content .\names.txt 	//gets the first and last name from names.txt
+This sets this as the password for all users we create
 
-$password = ConvertTo-SecureString $PASSWORD_FOR_USERS –AsPLainText –Force	//takes the plain text password and converts it into the $password object
-New-ADOrganzaitonalUnit –Name _USERS –ProtectedFromAccidentalDeletion $false 	//creates a container called _USERS under Active Directory Users and Computers (mydomain.com) 	and unchecks “Protect container from Accidental Deletion”
+*USER_FIRST_LAST_LIST =  Get-Content .\names.txt*
+
+This gets the first and last name from names.txt
+
+*$password = ConvertTo-SecureString $PASSWORD_FOR_USERS –AsPLainText –Force*	
+
+This takes the plain text password and converts it into the $password object
+
+*New-ADOrganzaitonalUnit –Name _USERS –ProtectedFromAccidentalDeletion $false* 	
+
+This creates a container called _USERS under Active Directory Users and Computers (mydomain.com) 	and unchecks “Protect container from Accidental Deletion”
+
+![foreachloop](https://github.com/GSecAwareness/CreateActiveDirectoryLab/blob/main/for%20each%20loop.PNG)
    
-Foreach ($n in $USER_FIRST_LAST_LIST) {}	//creates a loop where $n is the current user being examined to receiving input; the loop runs for each name in the list 
-$first = $n.Split(“ “)[0].ToLower() 	//creates a split from the space; takes the first element (0) and stores it in the variable $first
-$last - $n.Split(“ “)[1].ToLower()		//splits from the space; takes the second element (1) and stores it in the variable $last
-$username = “$($first.Substring(0,1))$($last)”.ToLower()	//manipulates the first and last name to make one name; it takes the first character of the first name and attaches it to the last name 
-John Smith = jsmith
-Write-Host “Creating user: $($username)” –BackgroundColor Black –ForegroundColor Yellow
-//creates output to the screen “Creating user: 
+*Foreach ($n in $USER_FIRST_LAST_LIST) {}*	
+
+This creates a loop where $n is the current user being examined to receiving input; the loop runs for each name in the list 
+
+*$first = $n.Split(“ “)[0].ToLower()* 	
+
+This creates a split from the space; takes the first element (0) and stores it in the variable $first
+
+*last - $n.Split(“ “)[1].ToLower()*
+
+This splits from the space; takes the second element (1) and stores it in the variable $last
+
+*username = “$($first.Substring(0,1))$($last)”.ToLower()*
+
+This manipulates the first and last name to make one name; it takes the first character of the first name and attaches it to the last name 
+
+Example: John Smith = jsmith
+
+*Write-Host “Creating user: $($username)” –BackgroundColor Black –ForegroundColor Yellow*
+
+This creates output to the screen “Creating user:" 
  
-//Creates a new user and gives password “Password1”; password never expires; and put in the OU _USERS; it will pull the 1000 users and put them in the _USERS container
+![createsuser](https://github.com/GSecAwareness/CreateActiveDirectoryLab/blob/main/Creates%20new%20user%20in%20AD.PNG)
+
+This creates a new user and gives password “Password1”; password never expires; and put in the OU _USERS; it will pull the 1000 users and put them in the _USERS container
